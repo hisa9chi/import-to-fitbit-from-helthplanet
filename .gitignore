@@ -1,0 +1,13 @@
+## vs code config
+.vscode/
+ruby_vscode_debug/
+
+## Environment normalization:
+/.bundle/
+/vendor/bundle
+
+## gemfile
+Gemfile.lock
+
+## app execute file
+token_info

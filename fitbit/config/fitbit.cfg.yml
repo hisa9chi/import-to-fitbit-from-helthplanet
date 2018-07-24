@@ -1,0 +1,6 @@
+api_base_url: https://api.fitbit.com # fitbit API の base URL
+
+app_info:
+  client_id: 
+  client_secret: 
+  redirect_uri: http://localhost/

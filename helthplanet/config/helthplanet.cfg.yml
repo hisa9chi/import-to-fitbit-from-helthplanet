@@ -1,0 +1,23 @@
+api_base_url: https://www.healthplanet.jp # helthplanet API の base URL
+
+user_info:
+  login_id: 
+  password: 
+
+app_info:
+  client_id: 
+  client_secret: 
+  redirect_uri: https://www.healthplanet.jp/success.html
+
+# インナースキャンのデータ項目コード
+data_tags:
+  weight:                   '6021' # 体重(kg)
+  fat:                      '6022' # 体脂肪(%)
+  muscle_mass:              '6023' # 筋肉量 (kg)
+  muscle_score:             '6024' # 筋肉スコア
+  visceral_fat_lv_decimal:  '6025' # 内臓脂肪レベル2(小数点有り、手入力含まず)
+  visceral_fat_lv:          '6026' # 内臓脂肪レベル(小数点無し、手入力含む)
+  basal_metabolic_rate:     '6027' # 基礎代謝量 (kcal)bmr
+  body_age:                 '6028' # 体内年齢 (才)
+  bone_mass:                '6029' # 推定骨量 (kg)
+
