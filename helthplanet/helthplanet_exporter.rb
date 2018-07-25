@@ -20,23 +20,24 @@ class HelthplanetExporter
 
     # targets からコードを設定
     get_innerscan_data_lists = []
-    targets.each { |target|
+    targets.each do |target|
       get_innerscan_data_lists.push( data_tags[target] )
-    }
+    end
 
     # データ取得
     result_data = api_util.get_innerscan_data( access_token, get_innerscan_data_lists, from_date, to_date )
 
     results = {}
-    targets.each { |target|
-      results[target] = []
-    }
+    if result_data.length > 0
+      targets.each { |target|
+        results[target] = []
+      }
     
-    result_data.each { |data|
-      index = get_innerscan_data_lists.index( data['tag'] )
-      results[targets[index]].push( data )
-    }
-
+      result_data.each do |data|
+        index = get_innerscan_data_lists.index( data['tag'] )
+        results[targets[index]].push( data )
+      end
+    end
     results
   end
 end

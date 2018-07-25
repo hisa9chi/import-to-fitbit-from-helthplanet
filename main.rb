@@ -14,10 +14,6 @@ helthplanet_exporter = HelthplanetExporter.new()
 cmd = ARGV[0]
 option = ARGV[1]
 
-def create_import_data
-
-end
-
 case cmd
 when 'auth_url'
   # AuthorizationCode 取得用のURL取得
@@ -34,11 +30,13 @@ when 'rsync'
   # Helthplanet からデータを取得して Fitbit へ登録
   datas = helthplanet_exporter.get_data( TARGET_DATA, from_date, to_date )
   puts datas
-  # 第二引数でトークンを指定していればそちらを優先
-  # 指定していなければ環境変数を利用
-  rehresh_token = option ||= ENV['FITBIT_REFRESH_TOKEN']
 
-  fitbit_importer.import_weight_data( rehresh_token, datas )  
+  unless datas.empty?
+    # 第二引数でトークンを指定していればそちらを優先
+    # 指定していなければ環境変数を利用
+    rehresh_token = option ||= ENV['FITBIT_REFRESH_TOKEN']
+    fitbit_importer.import_weight_data( rehresh_token, datas )
+  end
 else
   puts 'command error.'
 end
