@@ -1,0 +1,55 @@
+version: 2
+
+jobs:
+  rsync:
+    docker:
+      - image: ruby:2.5.1
+    working_directory: ~/import-to-fitbit-from-helthplanet
+    environment:
+      TZ: "/usr/share/zoneinfo/Asia/Tokyo"
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-import-to-fitbit-from-helthplanet-{{ checksum "Gemfile.lock" }}
+            - v1-import-to-fitbit-from-helthplanet-
+
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --path vendor/bundle
+      - save_cache:
+          key: v1-import-to-fitbit-from-helthplanet-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+        
+      - run:
+          name: Helthplanet weight and fat data import to Fitbit
+          command: |
+            bundle exec ruby main.rb rsync $FITBIT_REFRESH_TOKEN
+      - run:
+          name: Update refresh token
+          command: |
+            if [ -e token_info ]; then
+              echo "update refresh token."
+              export NEW_REFRESH_TOKEN=`grep 'RefreshToken:' token_info | cut -c 14-` 
+              curl -sS -X POST --header "Content-Type: application/json" \
+                -d "{\"name\":\"FITBIT_REFRESH_TOKEN\", \"value\":\"$NEW_REFRESH_TOKEN\"}" \
+                https://circleci.com/api/v1.1/project/github/hisa9chi/import-to-fitbit-from-helthplanet/envvar?circle-token=$CIRCLECI_API_TOKEN
+            else
+              echo "not update."
+            fi
+
+workflows:
+  version: 2
+  rsync-daily-flow:
+    triggers:
+      - schedule:
+          cron: "0 1,6 * * *" #JST 10:00 and 15:00
+          filters:
+            branches:
+              only: 
+                - master
+    jobs:
+      - rsync
