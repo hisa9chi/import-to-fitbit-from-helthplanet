@@ -7,7 +7,7 @@ ruby_vscode_debug/
 /vendor/bundle
 
 ## gemfile
-Gemfile.lock
+#Gemfile.lock
 
 ## app execute file
 token_info
