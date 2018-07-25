@@ -20,4 +20,3 @@ data_tags:
   basal_metabolic_rate:     '6027' # 基礎代謝量 (kcal)bmr
   body_age:                 '6028' # 体内年齢 (才)
   bone_mass:                '6029' # 推定骨量 (kg)
-
