@@ -68,20 +68,24 @@ class FitbitImporter
 
   # 体重を登録
   def import_weight( client, datas )
-    datas.each { |data|
-      req_data = create_request_data( 'weight', data )
-      res = client.log_weight( req_data )
-      puts res
-    }
+    datas.each do |data|
+      unless data.empty?
+        req_data = create_request_data( 'weight', data )
+        res = client.log_weight( req_data )
+        puts res
+      end
+    end
   end
 
   # 体脂肪を登録
   def import_fat( client, datas )
-    datas.each { |data|
-      req_data = create_request_data( 'fat', data )
-      res = client.log_body_fat( req_data )
-      puts res
-    }
+    datas.each do |data|
+      unless data.empty?
+        req_data = create_request_data( 'fat', data )
+        res = client.log_body_fat( req_data )
+        puts res
+      end
+    end
   end
 
   def create_request_data( key, data )
