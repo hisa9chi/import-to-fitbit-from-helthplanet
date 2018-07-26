@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/hisa9chi/import-to-fitbit-from-helthplanet/tree/master.svg?style=svg)](https://circleci.com/gh/hisa9chi/import-to-fitbit-from-helthplanet/tree/master)
+
 ## import-to-fitbit-from-helthplanet
 - Helthplanet に登録されている体重、体脂肪を Fitbit へインポートする。
 - 1日単位で Helthplanet よりデータを取得してその取得データを Fitbit 側へ登録する。 
