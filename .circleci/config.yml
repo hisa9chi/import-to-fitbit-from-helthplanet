@@ -46,7 +46,7 @@ workflows:
   rsync-daily-flow:
     triggers:
       - schedule:
-          cron: "0 1,6 * * *" #JST 10:00 and 15:00
+          cron: "0 3 * * *" #JST 12:00
           filters:
             branches:
               only: 
