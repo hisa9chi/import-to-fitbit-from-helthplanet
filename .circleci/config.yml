@@ -3,7 +3,7 @@ version: 2
 jobs:
   rsync:
     docker:
-      - image: ruby:2.5.1
+      - image: cimg/ruby:3.1.4
     working_directory: ~/import-to-fitbit-from-helthplanet
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"

@@ -2,43 +2,45 @@ GEM
   remote: https://rubygems.org/
   specs:
     ansi (1.5.0)
-    ast (2.4.0)
-    domain_name (0.5.20180417)
+    ast (2.4.2)
+    domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    faraday (0.15.3)
-      multipart-post (>= 1.2, < 3)
-    faraday-cookie_jar (0.0.6)
-      faraday (>= 0.7.4)
+    faraday (2.7.4)
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-cookie_jar (0.0.7)
+      faraday (>= 0.8.0)
       http-cookie (~> 1.0.0)
-    fitbit_api (0.9.0)
+    faraday-net_http (3.0.2)
+    fitbit_api (0.15.1)
       oauth2 (~> 1.0)
-    hashie (3.6.0)
-    http-cookie (1.0.3)
+    hashie (5.0.0)
+    http-cookie (1.0.5)
       domain_name (~> 0.5)
-    json (2.1.0)
-    jwt (2.1.0)
-    multi_json (1.13.1)
+    json (2.6.3)
+    jwt (2.7.0)
+    multi_json (1.15.0)
     multi_xml (0.6.0)
-    multipart-post (2.0.0)
-    oauth2 (1.4.1)
-      faraday (>= 0.8, < 0.16.0)
+    oauth2 (1.4.11)
+      faraday (>= 0.17.3, < 3.0)
       jwt (>= 1.0, < 3.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
-      rack (>= 1.2, < 3)
-    oga (2.15)
+      rack (>= 1.2, < 4)
+    oga (3.4)
       ast
       ruby-ll (~> 2.1)
-    rack (2.0.6)
+    rack (3.0.7)
     ruby-ll (2.1.2)
       ansi
       ast
+    ruby2_keywords (0.0.5)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.5)
+    unf_ext (0.0.8.2)
 
 PLATFORMS
-  ruby
+  arm64-darwin-22
 
 DEPENDENCIES
   faraday
@@ -49,4 +51,4 @@ DEPENDENCIES
   oga
 
 BUNDLED WITH
-   1.14.6
+   2.4.10
